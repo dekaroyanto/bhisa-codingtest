@@ -12,3 +12,11 @@ Email: dekaroy05@gmail.com
 Run Migrate
 Run UserSeeder
 ```
+
+## 🧑‍💻 Account 🧑‍💻
+
+```bash
+Username: admin
+email: admin@gmail.com
+password: admin
+```

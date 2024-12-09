@@ -3,9 +3,10 @@
 <?= $this->section('content') ?>
 <h1>Tambah Barang</h1>
 <form action="/barang/store" method="post">
+    <?= csrf_field() ?>
     <div class="mb-3">
         <label for="kode_barang" class="form-label">Kode Barang</label>
-        <input type="text" id="kode_barang" name="kode_barang" class="form-control" required>
+        <input type="text" id="kode_barang" name="kode_barang" class="form-control bg-light" value="<?= $kode_barang ?>" readonly>
     </div>
     <div class="mb-3">
         <label for="nama_barang" class="form-label">Nama Barang</label>

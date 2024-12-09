@@ -5,7 +5,7 @@
 <form action="/barang/update/<?= $barang['id'] ?>" method="post">
     <div class="mb-3">
         <label for="kode_barang" class="form-label">Kode Barang</label>
-        <input type="text" id="kode_barang" name="kode_barang" class="form-control" value="<?= $barang['kode_barang'] ?>" required>
+        <input type="text" id="kode_barang" name="kode_barang" class="form-control" value="<?= $barang['kode_barang'] ?>" disabled>
     </div>
     <div class="mb-3">
         <label for="nama_barang" class="form-label">Nama Barang</label>

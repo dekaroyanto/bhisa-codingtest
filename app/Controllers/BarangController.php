@@ -17,14 +17,33 @@ class BarangController extends BaseController
 
     public function create()
     {
-        return view('dashboard/barang/create');
+        $model = new BarangModel();
+
+        // Generate kode barang otomatis
+        $lastBarang = $model->orderBy('id', 'DESC')->first();
+        $lastKode = $lastBarang ? $lastBarang['kode_barang'] : null;
+
+        $newKode = $this->generateKodeBarang($lastKode);
+
+        $data['kode_barang'] = $newKode;
+
+        return view('dashboard/barang/create', $data);
     }
 
     public function store()
     {
         $model = new BarangModel();
-        $model->insert($this->request->getPost());
-        return redirect()->to('/barang');
+
+        $data = [
+            'kode_barang' => $this->request->getPost('kode_barang'),
+            'nama_barang' => $this->request->getPost('nama_barang'),
+            'satuan'      => $this->request->getPost('satuan'),
+            'harga'       => $this->request->getPost('harga'),
+        ];
+
+        $model->insert($data);
+
+        return redirect()->to('/barang')->with('success', 'Barang berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -54,5 +73,18 @@ class BarangController extends BaseController
         $barangModel = new BarangModel();
         $barangModel->delete($id);
         return redirect()->to('/barang')->with('success', 'Data barang berhasil dihapus.');
+    }
+
+    private function generateKodeBarang($lastKode)
+    {
+        if (!$lastKode) {
+            return 'PR01';
+        }
+
+        $number = (int)substr($lastKode, 2);
+
+        $newNumber = $number + 1;
+
+        return 'PR' . str_pad($newNumber, 2, '0', STR_PAD_LEFT);
     }
 }

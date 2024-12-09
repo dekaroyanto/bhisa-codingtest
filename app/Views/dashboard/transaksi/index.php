@@ -27,7 +27,7 @@
                     <?php foreach ($transaksi as $t): ?>
                         <tr>
                             <td><?= $t['no_faktur'] ?></td>
-                            <td><?= date('d-m-Y', strtotime($t['tanggal'])) ?></td>
+                            <td><?= date('d F Y', strtotime($t['tanggal'])) ?></td>
                             <td><?= $t['nama_perusahaan'] ?></td>
                             <td>
                                 <?php

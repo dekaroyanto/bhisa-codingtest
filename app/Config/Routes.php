@@ -27,6 +27,18 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
 
     $routes->get('print', 'TransaksiController::printPage');
     $routes->get('print/transaksi/(:num)', 'TransaksiController::printTransaksi/$1');
+
+    $routes->get('users', 'UsersController::index');
+    $routes->get('/users/create', 'AuthController::createUser');
+    $routes->post('/users/store', 'AuthController::storeUser');
+    $routes->post('users/update/(:num)', 'UsersController::update/$1');
+    $routes->get('users/delete/(:num)', 'UsersController::delete/$1');
+
+    $routes->get('/profile', 'AuthController::editProfile');
+    $routes->post('/profile', 'AuthController::updateProfile');
+
+    $routes->get('/change-password', 'AuthController::changePassword');
+    $routes->post('/change-password', 'AuthController::updatePassword');
 });
 
 $routes->get('login', 'AuthController::login', ['as' => 'login']);

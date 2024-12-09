@@ -28,14 +28,31 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/transaksi">Transaksi</a>
                     </li>
+                    <?php if (session()->get('user')['role'] === 'admin'): ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/users">Users</a>
+                        </li>
+                    <?php endif; ?>
                     <!-- <li class="nav-item">
                         <a class="nav-link" href="/print">Print Transaksi</a>
                     </li> -->
                 </ul>
 
+                <!-- <a href="/logout" class="btn btn-dark ms-auto">Logout</a> -->
 
-                <a href="/logout" class="btn btn-dark ms-auto">Logout</a>
-
+            </div>
+            <div class="dropdown ms-auto">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?= session()->get('user')['name'] ?>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="/profile">Ubah Profil</a></li>
+                    <li><a class="dropdown-item" href="/change-password">Ubah Password</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
@@ -49,6 +66,16 @@
                 icon: 'success',
                 title: 'Berhasil!',
                 text: '<?= session()->getFlashdata('success') ?>',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+    <script>
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: '<?= session()->getFlashdata('error') ?>',
                 confirmButtonText: 'OK'
             });
         <?php endif; ?>

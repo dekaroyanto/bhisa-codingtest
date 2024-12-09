@@ -25,7 +25,14 @@ class AuthFilter implements FilterInterface
      */
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('user')) {
+        $user = session()->get('user');
+
+        if (!$user) {
+            return redirect()->to('/login');
+        }
+
+        if ($user['status'] === 'deactive') {
+            session()->setFlashdata('error', 'Akun Anda tidak aktif, silahkan hubungi admin.');
             return redirect()->to('/login');
         }
     }

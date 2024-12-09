@@ -21,6 +21,7 @@ class TransaksiController extends BaseController
     {
         $barangModel = new BarangModel();
         $data['barang'] = $barangModel->findAll();
+        $data['nama_purchasing'] = session()->get('user')['name'];
         return view('dashboard/transaksi/create', $data);
     }
 
@@ -30,7 +31,7 @@ class TransaksiController extends BaseController
         $transaksiDetailModel = new TransaksiDetailModel();
 
 
-        $transaksiData = $this->request->getPost(['no_faktur', 'tanggal', 'nama_perusahaan', 'alamat_perusahaan', 'nama_up']);
+        $transaksiData = $this->request->getPost(['no_faktur', 'tanggal', 'nama_perusahaan', 'alamat_perusahaan', 'nama_up', 'nama_purchasing']);
         $transaksiId = $transaksiModel->insert($transaksiData);
 
 
@@ -47,7 +48,7 @@ class TransaksiController extends BaseController
             ]);
         }
 
-        return redirect()->to('/transaksi');
+        return redirect()->to('/transaksi')->with('success', 'Transaksi berhasil ditambahkan.');
     }
 
     public function printPage()
@@ -107,7 +108,7 @@ class TransaksiController extends BaseController
         $transaksiModel = new TransaksiModel();
         $detailModel = new TransaksiDetailModel();
 
-        $transaksiData = $this->request->getPost(['no_faktur', 'tanggal', 'nama_perusahaan', 'alamat_perusahaan', 'nama_up']);
+        $transaksiData = $this->request->getPost(['no_faktur', 'tanggal', 'nama_perusahaan', 'alamat_perusahaan', 'nama_up', 'nama_purchasing']);
         $transaksiModel->update($id, $transaksiData);
 
         $detailModel->where('transaksi_id', $id)->delete();

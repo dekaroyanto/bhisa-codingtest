@@ -10,10 +10,20 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'name'     => 'Admin User',
+                'name'     => 'Admin Boy',
                 'username' => 'admin',
                 'email'    => 'admin@gmail.com',
                 'password' => password_hash('admin', PASSWORD_BCRYPT),
+                'role'     => 'admin',
+                'status'   => 'active'
+            ],
+            [
+                'name'     => 'User Cuy',
+                'username' => 'user',
+                'email'    => 'user@gmail.com',
+                'password' => password_hash('user', PASSWORD_BCRYPT),
+                'role'     => 'user',
+                'status'   => 'deactive'
             ]
         ];
 

@@ -3,6 +3,7 @@
 <?= $this->section('content') ?>
 <h1>Edit Barang</h1>
 <form action="/barang/update/<?= $barang['id'] ?>" method="post">
+    <?= csrf_field() ?>
     <div class="mb-3">
         <label for="kode_barang" class="form-label">Kode Barang</label>
         <input type="text" id="kode_barang" name="kode_barang" class="form-control" value="<?= $barang['kode_barang'] ?>" disabled>
@@ -19,6 +20,6 @@
         <label for="harga" class="form-label">Harga</label>
         <input type="number" id="harga" name="harga" class="form-control" value="<?= $barang['harga'] ?>" required>
     </div>
-    <button type="submit" class="btn btn-success">Simpan Perubahan</button>
+    <button type="submit" class="btn btn-danger">Simpan Perubahan</button>
 </form>
 <?= $this->endSection() ?>

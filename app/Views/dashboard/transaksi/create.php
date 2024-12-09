@@ -5,6 +5,7 @@
 <div class="card">
     <div class="card-body">
         <form action="/transaksi/store" method="post">
+            <?= csrf_field() ?>
             <div class="mb-3">
                 <label for="no_faktur" class="form-label">No Faktur</label>
                 <input type="text" id="no_faktur" name="no_faktur" class="form-control" required>
@@ -12,6 +13,10 @@
             <div class="mb-3">
                 <label for="tanggal" class="form-label">Tanggal</label>
                 <input type="date" id="tanggal" name="tanggal" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="nama_purchasing" class="form-label">Nama Purchasing</label>
+                <input type="text" name="nama_purchasing" id="nama_purchasing" class="form-control bg-light" value="<?= $nama_purchasing ?>" readonly>
             </div>
             <div class="mb-3">
                 <label for="nama_perusahaan" class="form-label">Nama Perusahaan</label>
@@ -48,7 +53,7 @@
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-success mt-3">Simpan Transaksi</button>
+            <button type="submit" class="btn btn-danger mt-3">Simpan Transaksi</button>
         </form>
     </div>
 </div>

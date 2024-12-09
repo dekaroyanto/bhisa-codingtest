@@ -97,7 +97,7 @@
             <div class="col-6 signature">
                 <p>Purchasing</p>
                 <br><br>
-                <p><strong>Ilham</strong></p>
+                <p><strong><?= $transaksi['nama_purchasing'] ?></strong></p>
             </div>
             <div class="col-6 text-end signature">
                 <p>Cirebon, <?= date('d F Y', strtotime($transaksi['tanggal'])) ?></p>

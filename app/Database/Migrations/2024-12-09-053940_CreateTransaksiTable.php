@@ -15,6 +15,7 @@ class CreateTransaksiTable extends Migration
             'nama_perusahaan'   => ['type' => 'VARCHAR', 'constraint' => 100],
             'nama_up'   => ['type' => 'VARCHAR', 'constraint' => 100],
             'alamat_perusahaan' => ['type' => 'TEXT', 'null' => true],
+            'nama_purchasing'   => ['type' => 'VARCHAR', 'constraint' => 100],
             'created_at'     => ['type' => 'DATETIME', 'null' => true],
             'updated_at'     => ['type' => 'DATETIME', 'null' => true],
         ]);

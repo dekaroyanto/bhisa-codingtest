@@ -2,6 +2,6 @@
 
 <?= $this->section('content') ?>
 
-<h1>Welcome to Dashboard</h1>
+<h1>Welcome to Dashboard, <?= session()->get('user')['name'] ?></h1>
 
 <?= $this->endSection() ?>

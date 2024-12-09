@@ -47,7 +47,8 @@
                                 <input type="email" name="email" id="email" placeholder="Your Email" />
                             </div>
                             <div class="form-group">
-                                <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                                <label for="password
+                                "><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="password" id="password" placeholder="Password" />
                             </div>
                             <div class="form-group form-button">
@@ -57,7 +58,7 @@
                     </div>
                     <div class="signup-image">
                         <figure><img src="<?= base_url('loginform/images/regislogo.jpg') ?>" alt="sign in image"></figure>
-                        <a href="/login" class="signup-image-link">I am already member</a>
+                        <a href="/login" class="signup-image-link">Already have an account</a>
                     </div>
                 </div>
             </div>

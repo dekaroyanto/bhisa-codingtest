@@ -22,13 +22,12 @@
 <body>
 
     <div class="main">
-
-
         <section class="sign-in">
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
                         <figure><img src="<?= base_url('loginform/images/loginlogo.jpg') ?>" alt="sign in image"></figure>
+                        <a href="/register" class="signup-image-link">Create an account</a>
                     </div>
 
                     <div class="signin-form">
@@ -62,6 +61,16 @@
                 icon: 'error',
                 title: 'Error!',
                 text: '<?= session()->getFlashdata('error') ?>',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    </script>
+    <script>
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!',
+                text: '<?= session()->getFlashdata('success') ?>',
                 confirmButtonText: 'OK'
             });
         <?php endif; ?>

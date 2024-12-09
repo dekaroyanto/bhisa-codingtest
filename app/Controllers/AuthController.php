@@ -51,8 +51,16 @@ class AuthController extends BaseController
 
         $data = $this->request->getPost(['name', 'username', 'email', 'password']);
         $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
-        $data['role'] = 'admin';
+        $data['role'] = 'user';
         $data['status'] = 'deactive';
+
+        if ($model->where('email', $data['email'])->first()) {
+            return redirect()->back()->with('error', 'Email sudah terdaftar.');
+        }
+
+        if ($model->where('username', $data['username'])->first()) {
+            return redirect()->back()->with('error', 'Username sudah terdaftar.');
+        }
 
         if ($model->insert($data)) {
             return redirect()->to('/login')->with('success', 'Registrasi berhasil! Tunggu konfirmasi dari admin.');

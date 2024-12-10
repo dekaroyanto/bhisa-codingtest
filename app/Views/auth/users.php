@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 <div class="container mt-4">
-    <h1>Manajemen Pengguna</h1>
+    <h1>User Account</h1>
     <a href="/users/create" class="btn btn-danger mb-2">Tambah Pengguna</a>
     <div class="card">
         <div class="card-body">
